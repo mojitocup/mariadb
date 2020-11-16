@@ -1,0 +1,63 @@
+[client]
+port=3306
+socket=/var/run/mysqld/mysqld.sock
+
+[mysqld_safe]
+socket=/var/run/mysqld/mysqld.sock
+
+[mysqld]
+user=mysql
+pid-file=/var/run/mysqld/mysqld.pid
+socket=/var/run/mysqld/mysqld.sock
+port=3306
+basedir=/usr
+datadir=/var/lib/mysql
+tmpdir=/tmp
+lc-messages-dir=/usr/share/mysql
+log_error=/var/log/mysql/error.log
+
+symbolic-links=0
+
+skip-external-locking
+key_buffer_size = 32M
+
+max_allowed_packet = 1G
+#table_open_cache_instances=16
+table_open_cache = 4096
+sort_buffer_size = 128M
+read_buffer_size = 128M
+read_rnd_buffer_size = 8M
+myisam_sort_buffer_size = 64M
+thread_cache_size = 1000
+query_cache_size = 0
+query_cache_type = 0
+skip-name-resolve
+join_buffer_size = 24M
+max_heap_table_size = 1G
+tmp_table_size = 1G
+
+#innodb_use_native_aio = 0
+innodb_file_per_table
+innodb_buffer_pool_size = 20G
+innodb_log_file_size = 2G
+innodb_log_buffer_size = 64M
+innodb_flush_method = O_DIRECT
+innodb_flush_log_at_trx_commit = 2
+innodb_buffer_pool_instances = 24
+#innodb_locks_unsafe_for_binlog = 1
+#innodb_thread_concurrency = 0
+innodb_lock_wait_timeout = 7200
+innodb_open_files = 1000
+#innodb_thread_sleep_delay = 10000
+#innodb_strict_mode = off
+innodb_concurrency_tickets=5000
+
+
+
+max_connections=1024
+max_user_connections=75
+wait_timeout=28800
+interactive_timeout=28800
+long_query_time=5
+
+!includedir /etc/mysql/conf.d/
